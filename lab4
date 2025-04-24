@@ -1,1 +1,14 @@
+import random
 
+# Intervalın başlanğıcı və sonu
+start = -8
+end = 1
+
+# Siyahının uzunluğu
+n = 10  # Məsələn, 10 elementli siyahı
+
+# Siyahını yaradın
+random_list = [random.uniform(start, end) for _ in range(n)]
+
+# Siyahını çap edin
+print(random_list)
