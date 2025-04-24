@@ -1,1 +1,21 @@
+import random
 
+# Intervalın başlanğıcı və sonu
+start = 5
+end = 54
+
+# Siyahının uzunluğu
+n = 20  # Məsələn, 20 elementli siyahı
+
+# Siyahını yaradın
+random_list = [random.randint(start, end) for _ in range(n)]
+
+# 5-ə tam bölünən ədədləri tapın
+divisible_by_5 = [num for num in random_list if num % 5 == 0]
+
+# Əgər 5-ə tam bölünən elementlər varsa, onların ədədi ortasını hesablayın
+if divisible_by_5:
+    average = sum(divisible_by_5) / len(divisible_by_5)
+    print(f"5-ə tam bölünən elementlərin ədədi ortası: {average}")
+else:
+    print("5-ə tam bölünən heç bir element tapılmadı.")
