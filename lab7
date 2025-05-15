@@ -1,1 +1,31 @@
+# 1. İstifadəçidən massiv ölçülərini al
+n = int(input("Sətir sayı (n): "))
+m = int(input("Sütun sayı (m): "))
 
+# 2. Massiv daxil edilir və fayla yazılır
+A = []
+with open("massiv.txt", "w") as f:
+    for i in range(n):
+        sətir = []
+        for j in range(m):
+            qiymət = int(input(f"A[{i}][{j}] = "))
+            sətir.append(qiymət)
+            f.write(str(qiymət) + " ")
+        A.append(sətir)
+        f.write("\n")  # Sətiri növbəti sətrə keçirtmək
+
+print("Massiv 'massiv.txt' faylına yazıldı.")
+
+# 3. Fayldan oxuyaraq X > 5 şərtinə uyğun ədədləri yeni fayla yaz
+cem = 0
+with open("massiv.txt", "r") as daxil_fayl, open("filter.txt", "w") as yeni_fayl:
+    for sətr in daxil_fayl:
+        ədədlər = list(map(int, sətr.strip().split()))
+        for x in ədədlər:
+            if x > 5:
+                yeni_fayl.write(str(x) + " ")
+                cem += x
+        yeni_fayl.write("\n")
+
+print("Şərtə uyğun ədədlər 'filter.txt' faylına yazıldı.")
+print("Cəm:", cem)
