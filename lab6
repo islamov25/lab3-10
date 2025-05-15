@@ -1,1 +1,19 @@
+n = int(input("Sətir sayını daxil edin (n): "))
+m = int(input("Sütun sayını daxil edin (m): "))
 
+# Massivin daxil edilməsi
+A = []
+for i in range(n):
+    sətir = []
+    for j in range(m):
+        qiymət = int(input(f"A[{i}][{j}] = "))
+        sətir.append(qiymət)
+    A.append(sətir)
+
+# Tək nömrəli sətirlərin hasilinin hesablanması
+for i in range(n):
+    if i % 2 == 0:  # 0, 2, 4, ... sətirlər
+        hasil = 1
+        for j in range(m):
+            hasil *= A[i][j]
+        print(f"{i}-ci sətrin hasili: {hasil}")
