@@ -1,1 +1,27 @@
+def f(x):
+    return x**4 - 2*x**3 - x
 
+def bisection(a, b, tol):
+    if f(a) * f(b) >= 0:
+        print("Bu aralıqda kök yoxdur və ya metod tətbiq edilə bilməz.")
+        return None
+
+    while (b - a) / 2.0 > tol:
+        midpoint = (a + b) / 2.0
+        if f(midpoint) == 0:
+            return midpoint
+        elif f(a) * f(midpoint) < 0:
+            b = midpoint
+        else:
+            a = midpoint
+
+    return (a + b) / 2.0
+
+# Verilən interval və dəqiqlik
+a = 0.8
+b = 1.0
+tol = 0.0001
+
+root = bisection(a, b, tol)
+if root is not None:
+    print(f"Təqribi kök: {root}")
