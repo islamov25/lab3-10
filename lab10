@@ -1,1 +1,25 @@
+def f(x):
+    return x**4 - 2*x**3 - x
 
+def f_prime(x):
+    return 4*x**3 - 6*x**2 - 1
+
+def newton_method(x0, tol=1e-6, max_iter=100):
+    iteration = 0
+    while iteration < max_iter:
+        fx = f(x0)
+        fpx = f_prime(x0)
+        if fpx == 0:
+            raise ValueError("Törəmə sıfıra bərabərdir. Metod uğursuz oldu.")
+        x1 = x0 - fx / fpx
+        if abs(x1 - x0) < tol:
+            return x1, iteration
+        x0 = x1
+        iteration += 1
+    return x0, iteration  # maksimum iterasiyaya çatdısa
+
+# Başlanğıc nöqtə verilmiş intervaldan götürülür
+initial_guess = 0.9
+root, num_iterations = newton_method(initial_guess)
+
+print(f"Təqribi kök: {root:.6f}, Iterasiya sayı: {num_iterations}")
